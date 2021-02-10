@@ -15,22 +15,22 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-    @GetMapping("/person/{id}")
+    @GetMapping("/address/{id}")
     public ResponseEntity <Address> getProductById(@PathVariable Long id){
         return ResponseEntity.ok().body(addressService.getAddressById(id));
     }
 
-    @PostMapping("/person")
+    @PostMapping("/address")
     public ResponseEntity <Address> createProduct(@RequestBody Address address){
         return ResponseEntity.ok().body(this.addressService.createAddress(address));
     }
 
-    @PutMapping("/person/{id}")
+    @PutMapping("/address/{id}")
     public ResponseEntity <Address> updateProduct(@PathVariable Long id, @RequestBody Address address){
         address.setId(id);
         return ResponseEntity.ok().body(this.addressService.updateAddress(address));
     }
-    @DeleteMapping("/person/{id}")
+    @DeleteMapping("/address/{id}")
     public HttpStatus deleteProduct(@PathVariable Long id){
         this.addressService.deleteAddress(id);
         return HttpStatus.OK;
